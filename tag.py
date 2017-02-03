@@ -16,6 +16,10 @@ SCREEN_HEIGHT = 200
 # Creates The Sprites Group
 allSprites = pygame.sprite.Group()
 
+# Creates The Player Color Variables
+player1color = "RED"
+player2color = "BLUE"
+
 def isEscape(keys):
     return keys[27]
 
@@ -62,6 +66,31 @@ def MoveCharacter(keys, Wkey, Akey, Skey, Dkey, upArrow, downArrow, leftArrow, r
         #print "Right Arrow Was Pressed"
         if player2.rect.x + 15 <= SCREEN_WIDTH :
             player2.rect.x = player2.rect.x + 5
+
+def changeColor(keys):
+
+    global player1color
+    global player2color
+    
+    if keys[pygame.K_c] and player1color == "RED":
+        player1.changeColor(GREEN)
+        player1color = "GREEN"
+        time.sleep(0.1)
+
+    elif keys[pygame.K_c] and player1color == "GREEN":
+        player1.changeColor(RED)
+        player1color = "RED"
+        time.sleep(0.1)
+        
+    if keys[pygame.K_RCTRL] and player2color == "BLUE":
+        player2.changeColor(BLACK)
+        player2color = "BLACK"
+
+    elif keys[pygame.K_RCTRL] and player2color == "BLACK":
+        player2.changeColor(BLUE)
+        player2color = "BLUE"
+
+
         
 # Initialize Pygame
 pygame.init()
@@ -119,6 +148,9 @@ while True :
         if pygame.sprite.collide_rect(player1, player2):
             print "COLLISION!!!"
             pygame.quit()
+
+        changeColor(keys)
+            
 
     # Clear Screen And Make It White
     screen.fill(WHITE)
