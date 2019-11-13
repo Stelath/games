@@ -1,4 +1,4 @@
 # Games
-The place where I put all my games that I have made
-To play them just open up the python file and run them
-if you are on a rasberry pi press F5
+This is the place where I put all of my old games that made
+To play them just open up the python file and run them (Make Sure you have Pygame installed)
+If you are on a Raspberry PI you have Pygame
